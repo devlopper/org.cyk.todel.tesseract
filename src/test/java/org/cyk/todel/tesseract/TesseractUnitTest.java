@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 
-public class TesseractMain {
+public class TesseractUnitTest {
 
 	@Test
 	public void test() {
@@ -18,6 +18,7 @@ public class TesseractMain {
 			tesseract.setDatapath(new File(System.getProperty("user.dir"),"data").getAbsolutePath());
 			tesseract.setLanguage("fra");
 			String text = tesseract.doOCR(new File("data/image04.png"));
+			System.out.println("TesseractMain.test() : "+text);
 			Assertions.assertEquals("1,234,567,890", StringUtils.stripToNull(text));
 		} catch (Exception e) {
 			e.printStackTrace();
