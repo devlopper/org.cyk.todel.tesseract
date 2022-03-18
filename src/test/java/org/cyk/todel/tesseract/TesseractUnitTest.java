@@ -13,10 +13,11 @@ public class TesseractUnitTest {
 
 	@Test
 	public void test() {
-		String lib = System.getProperty("liblept");
-		System.out.println("TesseractUnitTest.test() *************************************** : "+lib);
-		if(lib != null && !lib.isBlank())
-			System.load(lib);
+		String libs = System.getProperty("libs");
+		System.out.println("TesseractUnitTest.test() *************************************** : "+libs);
+		if(libs != null && !libs.isBlank())
+			for(String lib : libs.split(","))
+				System.load(lib);
 		ITesseract tesseract = new Tesseract();
 		try {
 			tesseract.setDatapath(new File(System.getProperty("user.dir"),"data").getAbsolutePath());
